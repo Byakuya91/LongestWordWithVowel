@@ -12,59 +12,117 @@
 
 // !Explanation: Longest words are “everything” and “experience”, but the second has the most vowels
 
-// TODO: STEPS FOR THE PROBLEM
+// TODO: STEPS FOR THE PROBLEM(METHOD ONE)
 //  TODO: 1) Initialize variables to keep track of the longest word found and its vowel count(DONE).
 //  TODO: 2)Iterate through the input sentence word by word (after splitting it by spaces).(DONE)
 //  TODO: 3)For each word, check if it contains only English letters and no other characters (e.g., punctuation or numbers). (DONE)
 //  TODO: 4) If the current word passes the character validation, calculate its length and the number of vowels it contains(DONE)
-//  TODO: 5) Compare the current word's length with the length of the longest word found so far. If it's longer, update the longest word and its vowel count. If it's of the same length, compare the vowel count and update accordingly.
-//  TODO: 6) Continue iterating through all words.
-//  TODO: 7) After the loop, return the longest word found.
+//  TODO: 5) Compare the current word's length with the length of the longest word found so far. If it's longer, update the longest word and its vowel count. If it's of the same length, compare the vowel count and update accordingly.(DONE)
+//  TODO: 6) Continue iterating through all words.(DONE)
+//  TODO: 7) After the loop, return the longest word found.(DONE)
+// ! VERDICT: FAILED. Regex pattern was not taking.
+
+// TODO: STEPS FOR THE PROBLEM(METHOD TWO)
+//  TODO: 1) Initialize variables to keep track of the longest word found and the maxVowelCount(DONE).
+//  TODO: 2)Iterate through the input sentence word by word (after splitting it by spaces).(DONE)
+//  TODO: 3) Create a nested function to count the number vowels in a given word(DONE).
+//  TODO: 4) Iterate through the word(after spliting the sentence into an array) (DONE)
+//  TODO: 5) Calculate the word length and Vowel count.(DONE)
+//  TODO: 6) Continue iterating through all words.(DONE)
+//  TODO: 7) After the loop, return the longest word found.(DONE)
 
 // SOLUTION
+// function findLongestWordWithMostVowels(sentence) {
+//   // Initialize longestWord and maxVowelCount
+//   let longestWord = "";
+//   let maxVowelCount = -Infinity;
+//   let maxWordLength = 0;
+
+//   // Split the sentence into words using spaces as the delimiter
+//   const words_arr = sentence.split(" ");
+
+//   // Regular expression to match English letters
+//   const letterRegex = /^[a-zA-Z]+$/;
+
+//   // Regular expression to match vowels (a, e, i, o, u) case-insensitively
+//   // const vowelRegex = /[aeiou]/gi;
+//   const vowelRegex = /[aeiou]/i; // !Without the 'g' flag
+
+//   // Iterate through the words of the sentence
+//   for (const word of words_arr) {
+//     // console.log("the word in words_arr is:", word);
+
+//     // Check if words contain only ENGLISH letters
+//     if (letterRegex.test(word)) {
+//       // Calculate the word length
+//       const wordLength = word.length;
+
+//       // Count the number of vowels in the word
+//       // const vowelCount = word.toLowerCase().replace(vowelRegex, "").length;
+//       const vowelCount = (word.match(vowelRegex) || []).length;
+
+//       // Compare the current word with the longest word so far.
+//       if (
+//         wordLength > maxWordLength ||
+//         (wordLength === maxWordLength && vowelCount > maxVowelCount)
+//       ) {
+//         longestWord = word;
+//         console.log("The longest word:", longestWord);
+//         maxWordLength = wordLength;
+//         console.log("The max word length:", maxWordLength);
+//         maxVowelCount = vowelCount;
+//         console.log("the maximum Vowel Count:", maxVowelCount);
+//       }
+//     }
+//   }
+//   // Return the longestWord
+//   return longestWord;
+// }
+
+// SECOND METHOD(WITH REGEX)
 function findLongestWordWithMostVowels(sentence) {
-  // Initialize longestWord and maxVowelCount
+  // Initialize variables to store the result
   let longestWord = "";
   let maxVowelCount = 0;
 
   // Split the sentence into words using spaces as the delimiter
-  const words_arr = sentence.split(" ");
-
-  // Regular expression to match English letters
-  const letterRegex = /^[a-zA-Z]+$/;
+  const words = sentence.split(" ");
 
   // Regular expression to match vowels (a, e, i, o, u) case-insensitively
   const vowelRegex = /[aeiou]/gi;
 
+  // Function to count vowels in a word using regex
+  function countVowels(word) {
+    // finding all the matching vowels within the word
+    const matches = word.match(vowelRegex);
+    // returning matches of vowels within the word.
+    return matches ? matches.length : 0;
+  }
+
   // Iterate through the words of the sentence
-  for (const word of words_arr) {
-    // Check if words contain only ENGLISH letters
-    if (letterRegex.test(word)) {
-      // Calculate the word length
-      const wordLength = word.length;
+  for (const word of words) {
+    // Calculate the word length
+    const wordLength = word.length;
 
-      // Count the number of vowels in the word
-      // const vowelCount = word.toLowerCase().replace(vowelRegex, "").length;
-      const vowelCount = (word.match(vowelRegex) || []).length;
+    // Count the number of vowels in the word using regex
+    const vowelCount = countVowels(word);
 
-      // Compare the current word with the longest word so far.
-      if (
-        wordLength > longestWord.length ||
-        (wordLength === longestWord.length && vowelCount > maxVowelCount)
-      ) {
-        longestWord = word;
-        maxVowelCount = vowelCount;
-        // console.log(maxVowelCount);
-      }
+    // Compare the current word with the longest word so far.
+    if (
+      wordLength > longestWord.length ||
+      (wordLength === longestWord.length && vowelCount > maxVowelCount)
+    ) {
+      longestWord = word;
+      maxVowelCount = vowelCount;
     }
   }
-  // Return the longestWord
+
   return longestWord;
 }
 
 // TESTING THE FUNCTION
 const input =
-  "Smart people learn from everything and everyone, average people from their experience, stupid people already, have all the answers (Socrates)";
+  "Smart people learn from everything and everyone, average people from their experience, stupid people already have all the answers. (Socrates).";
 
 const longestWord = findLongestWordWithMostVowels(input);
 

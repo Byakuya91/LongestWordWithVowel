@@ -26,7 +26,7 @@
 //  TODO: 1) Initialize variables to keep track of the longest word found and the maxVowelCount(DONE).
 //  TODO: 2)Iterate through the input sentence word by word (after splitting it by spaces).(DONE)
 //  TODO: 3) Create a nested function to count the number vowels in a given word(DONE).
-//  TODO: 4) Iterate through the word(after spliting the sentence into an array) (DONE)
+//  TODO: 4) Iterate through the word(after splitting the sentence into an array) (DONE)
 //  TODO: 5) Calculate the word length and Vowel count.(DONE)
 //  TODO: 6) Continue iterating through all words.(DONE)
 //  TODO: 7) After the loop, return the longest word found.(DONE)

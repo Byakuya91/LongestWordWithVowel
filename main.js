@@ -30,6 +30,7 @@
 //  TODO: 5) Calculate the word length and Vowel count.(DONE)
 //  TODO: 6) Continue iterating through all words.(DONE)
 //  TODO: 7) After the loop, return the longest word found.(DONE)
+// * SUCCESS: solution works for all test cases.
 
 // SOLUTION
 // function findLongestWordWithMostVowels(sentence) {
@@ -121,9 +122,32 @@ function findLongestWordWithMostVowels(sentence) {
 }
 
 // TESTING THE FUNCTION
-const input =
+
+// Original test case
+const test_input =
   "Smart people learn from everything and everyone, average people from their experience, stupid people already have all the answers. (Socrates).";
 
-const longestWord = findLongestWordWithMostVowels(input);
+const longestWord = findLongestWordWithMostVowels(test_input);
 
-console.log(longestWord); // Output: "experience"
+console.log(" The longest word is: ", longestWord); // Output: "experience"
+
+// Sentence with most vowels
+const test_input_two = "The quick brown fox jumps over the lazy dog.";
+
+const longestWord_two = findLongestWordWithMostVowels(test_input_two);
+
+console.log(" The longest word is: ", longestWord_two); // answer: quick
+
+// Short-sentence
+const test_input_three = "Hi there!";
+
+const longestWord_three = findLongestWordWithMostVowels(test_input_three);
+
+console.log(" The longest word is: ", longestWord_three); // answer: "there"
+
+// Longest word with NO Vowels
+const test_input_four = "The crypts of Egypt hide secrets.";
+
+const longestWord_four = findLongestWordWithMostVowels(test_input_four);
+
+console.log(" The longest word is: ", longestWord_four);

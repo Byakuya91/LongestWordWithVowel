@@ -87,7 +87,7 @@ function findLongestWordWithMostVowels(sentence) {
   let maxVowelCount = 0;
 
   // Split the sentence into words using spaces as the delimiter
-  const words = sentence.split(" ");
+  const words = sentence.replace(/[^\w\s]/g, "").split(" ");
 
   // Regular expression to match vowels (a, e, i, o, u) case-insensitively
   const vowelRegex = /[aeiou]/gi;
@@ -136,7 +136,7 @@ const test_input_five = "Café au lait is a popular French drink.";
 
 const longestWord_five = findLongestWordWithMostVowels(test_input_five);
 
-console.log("the longest word is:", longestWord_five); // Output: popular
+// console.log("the longest word is:", longestWord_five); // Output: popular
 
 // //TEST CASE: Sentence with most vowels
 // const test_input_two = "The quick brown fox jumps over the lazy dog.";

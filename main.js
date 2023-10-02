@@ -138,21 +138,21 @@ const longestWord_five = findLongestWordWithMostVowels(test_input_five);
 
 console.log("the longest word is:", longestWord_five); // Output: popular
 
-// // Sentence with most vowels
+// //TEST CASE: Sentence with most vowels
 // const test_input_two = "The quick brown fox jumps over the lazy dog.";
 
 // const longestWord_two = findLongestWordWithMostVowels(test_input_two);
 
 // console.log(" The longest word is: ", longestWord_two); // answer: quick
 
-// // Short-sentence
+// // TC: Short-sentence
 // const test_input_three = "Hi there!";
 
 // const longestWord_three = findLongestWordWithMostVowels(test_input_three);
 
 // console.log(" The longest word is: ", longestWord_three); // answer: "there"
 
-// // Longest word with NO Vowels
+// // TC:  Longest word with NO Vowels
 // const test_input_four = "The crypts of Egypt hide secrets.";
 
 // const longestWord_four = findLongestWordWithMostVowels(test_input_four);
